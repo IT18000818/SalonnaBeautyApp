@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "272030506158",
+    "firebase_url": "https://beautician-eb188.firebaseio.com",
+    "project_id": "beautician-eb188",
+    "storage_bucket": "beautician-eb188.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272030506158:android:6964a408fe72eac07be13f",
+        "android_client_info": {
+          "package_name": "com.example.beautician"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272030506158-g1egg3q4rjb57b43k7ek2hvb1er3h7ej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beautician",
+            "certificate_hash": "9c169d2936c1043e1e7d3f1b0725e2c497a1d423"
+          }
+        },
+        {
+          "client_id": "272030506158-t6867lsduauh2bq6c2k93u7fvipvb4lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfvb61Vd76KKYfkQksqGopMBAUGLJQA2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272030506158-t6867lsduauh2bq6c2k93u7fvipvb4lp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
