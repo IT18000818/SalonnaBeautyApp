@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "168061130583",
+    "firebase_url": "https://sallona-app.firebaseio.com",
+    "project_id": "sallona-app",
+    "storage_bucket": "sallona-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168061130583:android:bf28074c42259e1eed5012",
+        "android_client_info": {
+          "package_name": "com.example.sallonaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168061130583-nqrlh52cfuorgkp33p7p0hj69ojhvf6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYl8yrFsfHQaeIYmJCA3y0WEBUHt56VhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168061130583-nqrlh52cfuorgkp33p7p0hj69ojhvf6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
