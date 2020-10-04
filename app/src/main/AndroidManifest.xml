@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.salonna">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Admin_User_Female_Product_Category" />
+        <activity android:name=".Admin_User_Male_Product_Category" />
+        <activity android:name=".Customer_Female_Product_Category" />
+        <activity android:name=".Customer_Male_Product_Category" />
+        <activity android:name=".Customer_BabyKids_Product_Category" />
+        <activity android:name=".Admin_Female_Body_Products_View" />
+        <activity android:name=".Admin_Female_Hair_Products_View" />
+        <activity android:name=".Admin_Male_Body_Products_View" />
+        <activity android:name=".Admin_Male_Hair_Products_View" />
+        <activity android:name=".Customer_Female_Body_Products_View" />
+        <activity android:name=".Customer_Female_Hair_Products_View" />
+        <activity android:name=".Customer_Male_Hair_Products_View" />
+        <activity android:name=".Customer_Male_Body_Products_View" />
+        <activity android:name=".Admin_BabyKids_BabyCream_Products_View" />
+        <activity android:name=".Admin_BabyKids_BabyWash_Products_View" />
+        <activity android:name=".Admin_BabyKids_BabyHair_Products_View" />
+        <activity android:name=".Customer_BabyKids_BabyCream_Products_View" />
+        <activity android:name=".Customer_BabyKids_BabyWash_Products_View" />
+        <activity android:name=".Customer_BabyKids_Hair_Products_View" />
+        <activity android:name=".Admin_Baby_kids_product_category" />
+        <activity android:name=".MyCart" />
+        <activity android:name=".Add_Product" />
+        <activity android:name=".Edit_Product" />
+        <activity android:name=".Customer_Category_selection" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MakePayment" />
+        <activity android:name=".Login" />
+        <activity android:name=".Admin_Customer_Category_selection">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

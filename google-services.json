@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "877163296967",
+    "firebase_url": "https://sallona-beauty-app.firebaseio.com",
+    "project_id": "sallona-beauty-app",
+    "storage_bucket": "sallona-beauty-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877163296967:android:4e5b08de16b2ea53dfa6e2",
+        "android_client_info": {
+          "package_name": "com.example.beautician"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877163296967-dq82vc2d0ft3iv6tsbkuka6jsm5cktas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1qxB2QhaHomdKHLpdLnu2R8fPpuuenTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877163296967-dq82vc2d0ft3iv6tsbkuka6jsm5cktas.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877163296967:android:5e439abbc8b470ebdfa6e2",
+        "android_client_info": {
+          "package_name": "com.example.sallonabeautyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877163296967-4bdaicef0ekul8l1vfjq37lea59cpaqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sallonabeautyapp",
+            "certificate_hash": "8181b5d51a7ae478b4d06218fa8d6d6b3b7b8c8c"
+          }
+        },
+        {
+          "client_id": "877163296967-dq82vc2d0ft3iv6tsbkuka6jsm5cktas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1qxB2QhaHomdKHLpdLnu2R8fPpuuenTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877163296967-dq82vc2d0ft3iv6tsbkuka6jsm5cktas.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877163296967:android:139e6bb68a576adadfa6e2",
+        "android_client_info": {
+          "package_name": "com.example.salonna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877163296967-dq82vc2d0ft3iv6tsbkuka6jsm5cktas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1qxB2QhaHomdKHLpdLnu2R8fPpuuenTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877163296967-dq82vc2d0ft3iv6tsbkuka6jsm5cktas.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
