@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Appointment"
+    android:background="@drawable/appointment">
+
+    <EditText
+        android:id="@+id/appName"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="112dp"
+        android:alpha=".7"
+        android:background="@drawable/input_start"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/appPhone"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:alpha=".7"
+        android:background="@drawable/input_start"
+        android:ems="10"
+        android:hint="Mobile Number"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appName" />
+
+    <EditText
+        android:id="@+id/appDate"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:alpha=".7"
+        android:background="@drawable/input_start"
+        android:ems="10"
+        android:hint="Select Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appText" />
+
+    <EditText
+        android:id="@+id/appTime"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:alpha=".7"
+        android:background="@drawable/input_start"
+        android:ems="10"
+        android:hint="Time"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appDate" />
+
+    <TextView
+        android:id="@+id/appText"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:alpha=".7"
+        android:background="@drawable/input_start"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appPhone" />
+
+    <Button
+        android:id="@+id/appDone"
+        android:layout_width="162dp"
+        android:layout_height="52dp"
+        android:background="@drawable/signupbutton"
+        android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBill" />
+
+    <TextView
+        android:id="@+id/appBill"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:alpha=".7"
+        android:background="@drawable/input_start"
+        android:text="Total Bill"
+        android:paddingTop="10dp"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

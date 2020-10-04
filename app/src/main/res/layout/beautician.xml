@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Beautician">
+
+    <Button
+        android:id="@+id/radioButton4"
+        android:layout_width="400dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/beautician3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/radioButton"
+        android:layout_width="190dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/beautician1"
+        app:layout_constraintBottom_toTopOf="@+id/radioButton3"
+        app:layout_constraintEnd_toStartOf="@+id/radioButton2"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/radioButton2"
+        android:layout_width="190dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/beautician2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton4" />
+
+    <Button
+        android:id="@+id/radioButton3"
+        android:layout_width="400dp"
+        android:layout_height="180dp"
+        android:background="@drawable/beautician4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

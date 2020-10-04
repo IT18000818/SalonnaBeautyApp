@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#907C7C</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="brown">#707070</color>
+    <color name="purple">#AE8AA5</color>
+    <color name="lightgrey">#FFFFFF</color>
+    <color name="lightbrown">#907C7C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="ladies">#503232</color>
+
+</resources>
