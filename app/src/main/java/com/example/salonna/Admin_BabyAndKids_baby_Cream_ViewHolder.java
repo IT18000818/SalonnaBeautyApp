@@ -14,7 +14,7 @@ public class Admin_BabyAndKids_baby_Cream_ViewHolder extends RecyclerView.ViewHo
     TextView tw_title, tw_brand,tw_price;
     ImageView imageView;
     ItemClickListener itemClickListener;
-    Button ViewButton;
+    Button btn_edit;
     Button Delete;
 
 
@@ -25,8 +25,8 @@ public class Admin_BabyAndKids_baby_Cream_ViewHolder extends RecyclerView.ViewHo
         tw_brand = (TextView)itemView.findViewById(R.id.cream_brand);
         tw_price = (TextView)itemView.findViewById(R.id.cream_price);
         imageView = (ImageView)itemView.findViewById(R.id.image_cream);
-        ViewButton=itemView.findViewById(R.id.btn_edit_cream);
-        Delete=itemView.findViewById(R.id.delete_cream_admin);
+        btn_edit = itemView.findViewById(R.id.btn_edit_cream);
+        Delete = itemView.findViewById(R.id.delete_cream_admin);
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {

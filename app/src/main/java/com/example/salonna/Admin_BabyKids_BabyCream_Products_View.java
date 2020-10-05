@@ -78,7 +78,7 @@ public class Admin_BabyKids_BabyCream_Products_View extends AppCompatActivity {
                 holder.tw_brand.setText("Brand: " + model.getBrand());
                 holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
                 Picasso.get().load(model.getImageId()).into(holder.imageView);
-                holder.ViewButton.setOnClickListener(new View.OnClickListener() {
+                holder.btn_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Admin_BabyKids_BabyCream_Products_View.this, Edit_Product.class);
@@ -90,7 +90,7 @@ public class Admin_BabyKids_BabyCream_Products_View extends AppCompatActivity {
                 holder.Delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        FuckMyass(model.getID());
+                        Delete(model.getID());
 
                     }
                 });
@@ -109,10 +109,10 @@ public class Admin_BabyKids_BabyCream_Products_View extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
-    public void FuckMyass(String ID){
-        DatabaseReference delteref= FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
-        delteref.removeValue();
-        Toast.makeText(this, "Fuck My ass, Fuk your dick", Toast.LENGTH_SHORT).show();
+    public void Delete(String ID){
+        DatabaseReference deleteRef= FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
+        deleteRef.removeValue();
+        Toast.makeText(this, "Delete was successful", Toast.LENGTH_SHORT).show();
 
     }
 }
