@@ -56,54 +56,39 @@ public class Edit_Product extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit__product);
 
-        productName = (EditText) findViewById(R.id.edit_product_Name);
-        brand = (EditText) findViewById(R.id.edit_product_Brand);
-        price = (EditText) findViewById(R.id.edit_product_Price);
-        Intent i1=getIntent();
-        String ID=i1.getStringExtra("ID");
-        Save=findViewById(R.id.button2);
-        Save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UpdateProducts();
-            }
-        });
-        DatabaseReference readref=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
+        Intent intent = getIntent();
+        int category = intent.getIntExtra("Category", 18);
 
-        readref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                productName.setText(snapshot.child("name").getValue().toString());
-                brand.setText(snapshot.child("brand").getValue().toString());
-                price.setText(snapshot.child("price").getValue().toString());
+        /*int cater_user_male = intent.getIntExtra("hair", 5);
 
+        int cater_user_female = intent.getIntExtra("femaleHair", 2);
 
-            }
+        int babyHair = intent.getIntExtra("babyHair",21);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        int babyWash = intent.getIntExtra("babyWash",23);*/
 
-            }
-        });
-
-
-        //--------------------------------------------------------------
+        Intent intent2 = getIntent();
+        String cream = intent.getStringExtra("BabyCream");
+        int male_hair = intent.getIntExtra("MaleHair",2);
+        int female_hair = intent.getIntExtra("FemaleHair",4);
+        int baby_hair = intent.getIntExtra("BabyHair",7);
+        int baby_wash = intent.getIntExtra("BabyWash",9);
 
         /*productName = (EditText) findViewById(R.id.edit_product_Name);
         brand = (EditText) findViewById(R.id.edit_product_Brand);
         price = (EditText) findViewById(R.id.edit_product_Price);
         Intent i1=getIntent();
-        String ID=i1.getStringExtra("ID");
+        String ID=i1.getStringExtra("IDBabyCream");
         Save=findViewById(R.id.button2);
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UpdateProducts();
+                UpdateProductsBabyCream();
             }
         });
-        DatabaseReference readref=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
+        DatabaseReference readRef=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
 
-        readref.addValueEventListener(new ValueEventListener() {
+        readRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 productName.setText(snapshot.child("name").getValue().toString());
@@ -119,26 +104,51 @@ public class Edit_Product extends AppCompatActivity {
             }
         });*/
 
+        /*productName = (EditText) findViewById(R.id.edit_product_Name);
+        brand = (EditText) findViewById(R.id.edit_product_Brand);
+        price = (EditText) findViewById(R.id.edit_product_Price);
+        Intent i2=getIntent();
+        String ID2 =i1.getStringExtra("IDBabyWash");
+        Save=findViewById(R.id.button2);
+        Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UpdateProductsBabyWash();
+            }
+        });
+        DatabaseReference readRef2=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Wash_Product").child(ID);
 
-        //--------------------------------------------------------------
-        /*mProductName = intent.getStringExtra("male_body_1");
-        mProductBrand = intent.getStringExtra("male_body_2");
-        mProductPrice = intent.getStringExtra("male_body_3");
+        readRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                productName.setText(snapshot.child("name").getValue().toString());
+                brand.setText(snapshot.child("brand").getValue().toString());
+                price.setText(snapshot.child("price").getValue().toString());
 
-        productName.setText(mProductName);
-        brand.setText(mProductBrand);
-        price.setText(mProductPrice);*/
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
+        /* Category validation method*/
+        SelectUserCategory(male_hair, female_hair,baby_hair,baby_wash, category);
     }
+
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
-
-
-
     }
 
-    public void UpdateProducts(){
+
+    /*update male hair products*/
+    public void UpdateProductsMaleHair(){
 
         productName = (EditText) findViewById(R.id.edit_product_Name);
         brand = (EditText) findViewById(R.id.edit_product_Brand);
@@ -146,487 +156,384 @@ public class Edit_Product extends AppCompatActivity {
         Intent i1=getIntent();
         String ID=i1.getStringExtra("ID");
 
-        DatabaseReference UodateRef=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
-        BabyAndKids_Cream_Products d1= new BabyAndKids_Cream_Products();
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Male_Hair_Product").child(ID);
+        Male_Hair_Product d1= new Male_Hair_Product();
         d1.setBrand(brand.getText().toString());
-        d1.setPrice(22);
+        d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
         d1.setImageId("asdasd");
         d1.setID(ID);
-        UodateRef.setValue(d1);
+        UpdateRef.setValue(d1);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+    }
+
+
+    /*update male body products*/
+    public void UpdateProductsMaleBody(){
+
+        productName = (EditText) findViewById(R.id.edit_product_Name);
+        brand = (EditText) findViewById(R.id.edit_product_Brand);
+        price = (EditText) findViewById(R.id.edit_product_Price);
+        Intent i1=getIntent();
+        String ID=i1.getStringExtra("ID");
+
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Male_Body_Product").child(ID);
+        Male_Body_Product d1= new Male_Body_Product();
+        d1.setBrand(brand.getText().toString());
+        d1.setPrice(Double.parseDouble(price.getText().toString()));
+        d1.setName(productName.getText().toString());
+        d1.setImageId("asdasd");
+        d1.setID(ID);
+        UpdateRef.setValue(d1);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+    }
+
+    /*update female hair products*/
+    public void UpdateProductsFemaleHair(){
+
+        productName = (EditText) findViewById(R.id.edit_product_Name);
+        brand = (EditText) findViewById(R.id.edit_product_Brand);
+        price = (EditText) findViewById(R.id.edit_product_Price);
+        Intent i1=getIntent();
+        String ID=i1.getStringExtra("ID");
+
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Female_Hair_Product").child(ID);
+        Female_Hair_Product d1= new Female_Hair_Product();
+        d1.setBrand(brand.getText().toString());
+        d1.setPrice(Double.parseDouble(price.getText().toString()));
+        d1.setName(productName.getText().toString());
+        d1.setImageId("asdasd");
+        d1.setID(ID);
+        UpdateRef.setValue(d1);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+    }
+
+    /*update female body products*/
+    public void UpdateProductsFemaleBody(){
+
+        productName = (EditText) findViewById(R.id.edit_product_Name);
+        brand = (EditText) findViewById(R.id.edit_product_Brand);
+        price = (EditText) findViewById(R.id.edit_product_Price);
+        Intent i1=getIntent();
+        String ID=i1.getStringExtra("ID");
+
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Female_Body_Product").child(ID);
+        Female_Body_Product d1= new Female_Body_Product();
+        d1.setBrand(brand.getText().toString());
+        d1.setPrice(Double.parseDouble(price.getText().toString()));
+        d1.setName(productName.getText().toString());
+        d1.setImageId("asdasd");
+        d1.setID(ID);
+        UpdateRef.setValue(d1);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+    }
+
+
+    /*update baby cream products*/
+    public void UpdateProductsBabyCream(){
+
+        productName = (EditText) findViewById(R.id.edit_product_Name);
+        brand = (EditText) findViewById(R.id.edit_product_Brand);
+        price = (EditText) findViewById(R.id.edit_product_Price);
+        Intent i1=getIntent();
+        String ID=i1.getStringExtra("IDBabyCream");
+
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
+        BabyAndKids_Cream_Products d1= new BabyAndKids_Cream_Products();
+        d1.setBrand(brand.getText().toString());
+        d1.setPrice(Double.parseDouble(price.getText().toString()));
+        d1.setName(productName.getText().toString());
+        d1.setImageId("asdasd");
+        d1.setID(ID);
+        UpdateRef.setValue(d1);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+    }
+
+    /*update baby hair products*/
+    public void UpdateProductsBabyHair(){
+        productName = (EditText) findViewById(R.id.edit_product_Name);
+        brand = (EditText) findViewById(R.id.edit_product_Brand);
+        price = (EditText) findViewById(R.id.edit_product_Price);
+        Intent i1=getIntent();
+        String ID=i1.getStringExtra("ID");
+
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Hair_Product").child(ID);
+        BabyAndKids_Hair_Products d1= new BabyAndKids_Hair_Products();
+        d1.setBrand(brand.getText().toString());
+        d1.setPrice(Double.parseDouble(price.getText().toString()));
+        d1.setName(productName.getText().toString());
+        d1.setImageId("asdasd");
+        d1.setID(ID);
+        UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
 
-
     }
+
+    /*update baby hair products*/
+    public void UpdateProductsBabyWash(){
+
+        productName = (EditText) findViewById(R.id.edit_product_Name);
+        brand = (EditText) findViewById(R.id.edit_product_Brand);
+        price = (EditText) findViewById(R.id.edit_product_Price);
+        Intent i1=getIntent();
+        String ID=i1.getStringExtra("IDBabyWash");
+
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Wash_Product").child(ID);
+        BabyAndKids_Wash_Products d1= new BabyAndKids_Wash_Products();
+        d1.setBrand(brand.getText().toString());
+        d1.setPrice(Double.parseDouble(price.getText().toString()));
+        d1.setName(productName.getText().toString());
+        d1.setImageId("asdasd");
+        d1.setID(ID);
+        UpdateRef.setValue(d1);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+    }
+
     /* User Categorization method */
-    /*public void SelectUserCategory(int category, int maleHair, int femaleHair, int babyHair, int babyWash) {
+    public void SelectUserCategory(int maleHair, int femaleHair, int babyHair, int babyWash,int category) {
         if (category == 18) {
             Toast.makeText(this, "male", Toast.LENGTH_SHORT);
-            //male body
-            if (maleHair == 5) {
-                final Male_Body_Product product = new Male_Body_Product();
+            /*If male category*/
+            if (maleHair == 2) {
+                /*If male body category */
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                productName = (EditText) findViewById(R.id.edit_product_Name);
+                brand = (EditText) findViewById(R.id.edit_product_Brand);
+                price = (EditText) findViewById(R.id.edit_product_Price);
+                Intent i1 = getIntent();
+                String ID = i1.getStringExtra("ID");
+                Save = findViewById(R.id.button2);
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ChooseFile();
+                        UpdateProductsMaleBody();
                     }
                 });
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Male_Body_Product").child(ID);
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
+                readRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onClick(View view) {
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        databaseReference = firebaseDatabase.getReference().child("Male_Body_Product");
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productName.setText(snapshot.child("name").getValue().toString());
+                        brand.setText(snapshot.child("brand").getValue().toString());
+                        price.setText(snapshot.child("price").getValue().toString());
 
-                        *//* Validations for Adding male body product *//*
 
-                        if (editText1.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText2.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText3.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Male Body Category", Toast.LENGTH_SHORT).show();
+                    }
 
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
                     }
                 });
 
 
             } else {
-                final Male_Hair_Product product = new Male_Hair_Product();
+                /*If male hair category */
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                productName = (EditText) findViewById(R.id.edit_product_Name);
+                brand = (EditText) findViewById(R.id.edit_product_Brand);
+                price = (EditText) findViewById(R.id.edit_product_Price);
+                Intent i1 = getIntent();
+                String ID = i1.getStringExtra("ID");
+                Save = findViewById(R.id.button2);
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ChooseFile();
+                        UpdateProductsMaleHair();
+                    }
+                });
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Male_Hair_Product").child(ID);
+
+                readRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productName.setText(snapshot.child("name").getValue().toString());
+                        brand.setText(snapshot.child("brand").getValue().toString());
+                        price.setText(snapshot.child("price").getValue().toString());
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        databaseReference = firebaseDatabase.getReference().child("Male_Hair_Product");
 
-                        *//* Validations for Adding male hair product *//*
-
-                        if (editText1.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText2.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText3.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Male Hair Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
-
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
-                    }
-                });
             }
         }
         //if female
-        else if(category == 17) {
-            Toast.makeText(this, "female", Toast.LENGTH_SHORT);
-            if (femaleHair == 2) {
-                final Female_Body_Product product = new Female_Body_Product();
+        else if (category == 17) {
+            /*If female category*/
+            if (femaleHair == 4) {
+                /*If female body category*/
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                productName = (EditText) findViewById(R.id.edit_product_Name);
+                brand = (EditText) findViewById(R.id.edit_product_Brand);
+                price = (EditText) findViewById(R.id.edit_product_Price);
+                Intent i1 = getIntent();
+                String ID = i1.getStringExtra("ID");
+                Save = findViewById(R.id.button2);
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ChooseFile();
+                        UpdateProductsFemaleBody();
+                    }
+                });
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Female_Body_Product").child(ID);
+
+                readRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productName.setText(snapshot.child("name").getValue().toString());
+                        brand.setText(snapshot.child("brand").getValue().toString());
+                        price.setText(snapshot.child("price").getValue().toString());
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        databaseReference = firebaseDatabase.getReference().child("Female_Body_Product");
-
-                        *//* Validations for Adding female body product *//*
-                        if (editText1.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText2.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText3.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Female Body Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
-
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
-                    }
-                });
             } else {
-                final Female_Hair_Product product = new Female_Hair_Product();
+                /*If female hair category*/
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                productName = (EditText) findViewById(R.id.edit_product_Name);
+                brand = (EditText) findViewById(R.id.edit_product_Brand);
+                price = (EditText) findViewById(R.id.edit_product_Price);
+                Intent i1 = getIntent();
+                String ID = i1.getStringExtra("ID");
+                Save = findViewById(R.id.button2);
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ChooseFile();
+                        UpdateProductsFemaleHair();
                     }
                 });
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Female_Hair_Product").child(ID);
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
+                readRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onClick(View view) {
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        databaseReference = firebaseDatabase.getReference().child("Female_Hair_Product");
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productName.setText(snapshot.child("name").getValue().toString());
+                        brand.setText(snapshot.child("brand").getValue().toString());
+                        price.setText(snapshot.child("price").getValue().toString());
 
-                        *//* Validations for Adding female hair product *//*
-                        if (editText1.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText2.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText3.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Female Hair Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
             }
         }
         //if baby and kids
         else {
-            if (babyHair == 22){
-                final BabyAndKids_Hair_Products product = new BabyAndKids_Hair_Products();
+            if (babyHair == 7) {
+                /*If baby hair category */
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                productName = (EditText) findViewById(R.id.edit_product_Name);
+                brand = (EditText) findViewById(R.id.edit_product_Brand);
+                price = (EditText) findViewById(R.id.edit_product_Price);
+                Intent i1 = getIntent();
+                String ID = i1.getStringExtra("ID");
+                Save = findViewById(R.id.button2);
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ChooseFile();
+                        UpdateProductsBabyHair();
                     }
                 });
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Hair_Product").child(ID);
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
+                readRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onClick(View view) {
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        databaseReference = firebaseDatabase.getReference().child("BabyAndKids_Hair_Product");
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productName.setText(snapshot.child("name").getValue().toString());
+                        brand.setText(snapshot.child("brand").getValue().toString());
+                        price.setText(snapshot.child("price").getValue().toString());
 
-                        *//* Validations for Adding baby and kids hair product *//*
-                        if (editText1.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText2.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText3.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Baby and Kids Hair Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
-            }else if (babyWash == 23){
-                final BabyAndKids_Cream_Products product = new BabyAndKids_Cream_Products();
+            } else if (babyWash == 9) {
+                /* If baby cream category */
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                productName = (EditText) findViewById(R.id.edit_product_Name);
+                brand = (EditText) findViewById(R.id.edit_product_Brand);
+                price = (EditText) findViewById(R.id.edit_product_Price);
+                Intent i1 = getIntent();
+                String ID = i1.getStringExtra("ID");
+                Save = findViewById(R.id.button2);
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ChooseFile();
+                        UpdateProductsBabyCream();
                     }
                 });
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
+                readRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onClick(View view) {
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        databaseReference = firebaseDatabase.getReference().child("BabyAndKids_Cream_Product");
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productName.setText(snapshot.child("name").getValue().toString());
+                        brand.setText(snapshot.child("brand").getValue().toString());
+                        price.setText(snapshot.child("price").getValue().toString());
 
-                        *//* Validations for Adding baby and kids cream product *//*
-                        if (editText1.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText2.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText3.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Baby and Kids Cream Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
             } else {
-                final BabyAndKids_Wash_Products product = new BabyAndKids_Wash_Products();
+                /*If baby wash category */
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                productName = (EditText) findViewById(R.id.edit_product_Name);
+                brand = (EditText) findViewById(R.id.edit_product_Brand);
+                price = (EditText) findViewById(R.id.edit_product_Price);
+                Intent i1 = getIntent();
+                String ID = i1.getStringExtra("ID");
+                Save = findViewById(R.id.button2);
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ChooseFile();
+                        UpdateProductsBabyWash();
+                    }
+                });
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Wash_Product").child(ID);
+
+                readRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productName.setText(snapshot.child("name").getValue().toString());
+                        brand.setText(snapshot.child("brand").getValue().toString());
+                        price.setText(snapshot.child("price").getValue().toString());
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
 
-                btn_add.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        databaseReference = firebaseDatabase.getReference().child("BabyAndKids_Wash_Product");
-
-                        *//* Validations for Adding baby and kids wash product *//*
-                        if (editText1.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText2.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (editText3.getText().length() == 0){
-                            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Baby and Kids Wash Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
-
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
-                    }
-                });
             }
         }
-
-    }*/
+    }
 }

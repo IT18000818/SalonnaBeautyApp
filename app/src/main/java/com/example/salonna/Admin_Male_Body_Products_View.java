@@ -93,11 +93,15 @@ public class Admin_Male_Body_Products_View extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull Admin_Male_body_ViewHolder holder, int position, @NonNull Male_Body_Product model) {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
-                holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
-                holder.b1.setOnClickListener(new View.OnClickListener() {
+                holder.tw_price.setText("Price: " + "Rs. " + model.getPrice());
+                holder.btn_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(Admin_Male_Body_Products_View.this, "CLicked", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Admin_Male_Body_Products_View.this, Edit_Product.class);
+                        intent.putExtra("IDMaleBody",model.getID());
+                        intent.putExtra("MaleBody",2);
+                        Toast.makeText(Admin_Male_Body_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
                     }
                 });
 

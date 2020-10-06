@@ -84,8 +84,18 @@ public class Admin_BabyKids_BabyHair_Products_View extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull Admin_BabyAndKids_baby_Hair_ViewHolder holder, int position, @NonNull BabyAndKids_Hair_Products model) {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
-                holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
+                holder.tw_price.setText("Price: " + "Rs. " +model.getPrice());
                 Picasso.get().load(model.getImageId()).into(holder.imageView);
+                holder.btn_edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Admin_BabyKids_BabyHair_Products_View.this, Edit_Product.class);
+                        Toast.makeText(Admin_BabyKids_BabyHair_Products_View.this, "Navigating to Edit page", Toast.LENGTH_SHORT).show();
+                        intent.putExtra("IDBabyHair", model.getID());
+                        intent.putExtra("BabyHair", 5);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull

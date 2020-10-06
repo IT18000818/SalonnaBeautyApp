@@ -76,13 +76,14 @@ public class Admin_BabyKids_BabyCream_Products_View extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull Admin_BabyAndKids_baby_Cream_ViewHolder holder, int position, @NonNull BabyAndKids_Cream_Products model) {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
-                holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
+                holder.tw_price.setText("Price: " + "Rs. " + model.getPrice() );
                 Picasso.get().load(model.getImageId()).into(holder.imageView);
                 holder.btn_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Admin_BabyKids_BabyCream_Products_View.this, Edit_Product.class);
-                        intent.putExtra("ID",model.getID());
+                        intent.putExtra("IDBabyCream",model.getID());
+                        intent.putExtra("BabyCream",7);
                         Toast.makeText(Admin_BabyKids_BabyCream_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
@@ -91,7 +92,6 @@ public class Admin_BabyKids_BabyCream_Products_View extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Delete(model.getID());
-
                     }
                 });
             }

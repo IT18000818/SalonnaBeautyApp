@@ -4,7 +4,7 @@ public class BabyAndKids_Hair_Products {
     private String ID;
     private String Name;
     private String Brand;
-    private double Price;
+    private Double Price;
     private String ImageId;
 
 
@@ -33,11 +33,11 @@ public class BabyAndKids_Hair_Products {
         Brand = brand;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         Price = price;
     }
 

@@ -2,6 +2,15 @@ package com.example.salonna;
 
 public class Female_Body_Product {
 
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    private String ID;
     private String Name;
     private String Brand;
     private double Price;

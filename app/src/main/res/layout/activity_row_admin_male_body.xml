@@ -58,7 +58,7 @@
             android:textSize="18dp" />
 
         <Button
-            android:id="@+id/btn_add_male_body"
+            android:id="@+id/btn_edit_male_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="215dp"

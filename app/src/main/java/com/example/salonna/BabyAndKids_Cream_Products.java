@@ -4,6 +4,7 @@ public class BabyAndKids_Cream_Products {
     private String Name;
     private String Brand;
     private String ID;
+    private Double Price;
 
     public String getID() {
         return ID;
@@ -12,8 +13,6 @@ public class BabyAndKids_Cream_Products {
     public void setID(String ID) {
         this.ID = ID;
     }
-
-    private double Price;
     private String ImageId;
 
 
@@ -47,7 +46,7 @@ public class BabyAndKids_Cream_Products {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         Price = price;
     }
 

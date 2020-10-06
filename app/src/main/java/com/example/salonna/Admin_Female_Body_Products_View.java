@@ -68,8 +68,18 @@ public class Admin_Female_Body_Products_View extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull Admin_Female_body_ViewHolder holder, int position, @NonNull Female_Body_Product model) {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
-                holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
+                holder.tw_price.setText("Price: " + "Rs. " + model.getPrice());
                 Picasso.get().load(model.getImageId()).into(holder.imageView);
+                holder.btn_edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Admin_Female_Body_Products_View.this, Edit_Product.class);
+                        intent.putExtra("IDFemaleHair",model.getID());
+                        intent.putExtra("FemaleHair",3);
+                        Toast.makeText(Admin_Female_Body_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
+                });
             }
 
 

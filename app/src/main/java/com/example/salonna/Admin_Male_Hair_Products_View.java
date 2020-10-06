@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 
 public class Admin_Male_Hair_Products_View extends AppCompatActivity {
 
-    Button btn_add;
+    Button btn_add,btn_edit;
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -92,8 +92,18 @@ public class Admin_Male_Hair_Products_View extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull Admin_Male_hair_ViewHolder holder, int position, @NonNull Male_Hair_Product model) {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
-                holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
+                holder.tw_price.setText("Price: " + "Rs. " + model.getPrice());
                 Picasso.get().load(model.getImageId()).into(holder.imageView);
+                holder.btn_edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Admin_Male_Hair_Products_View.this, Edit_Product.class);
+                        intent.putExtra("IDMaleHair",model.getID());
+                        intent.putExtra("MaleHair",1);
+                        Toast.makeText(Admin_Male_Hair_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
+                });
             }
             @NonNull
             @Override

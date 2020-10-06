@@ -28,12 +28,4 @@ public class Admin_BabyAndKids_baby_Cream_ViewHolder extends RecyclerView.ViewHo
         btn_edit = itemView.findViewById(R.id.btn_edit_cream);
         Delete = itemView.findViewById(R.id.delete_cream_admin);
     }
-
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
-    }
-
-    public void onClick(View view){
-        itemClickListener.onClick(view,getAdapterPosition(), false);
-    }
 }

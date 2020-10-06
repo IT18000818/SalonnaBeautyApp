@@ -50,7 +50,7 @@ public class Customer_Female_Body_Products_View extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull Customer_Female_body_ViewHolder holder, int position, @NonNull Female_Body_Product model) {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
-                holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
+                holder.tw_price.setText("Price: " + "Rs. " + model.getPrice());
                 Picasso.get().load(model.getImageId()).into(holder.imageView);
             }
 

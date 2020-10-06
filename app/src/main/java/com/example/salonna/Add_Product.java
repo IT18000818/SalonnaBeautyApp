@@ -149,14 +149,14 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } /*else if (imageUri == null) {
+                        } else if (imageUri == null) {
                             Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
                             return;
-                        } */else if (UploadTask != null && UploadTask.isInProgress()){
+                        } else if (UploadTask != null && UploadTask.isInProgress()){
                             Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            DatabaseReference  readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                            DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -165,13 +165,13 @@ public class Add_Product extends AppCompatActivity {
                                     IDx=Integer.parseInt(ID);
                                     IDx++;
                                     ID=Integer.toString(IDx);
-                                    Double price = Double.parseDouble(editText3.getText().toString().trim());
+                                    double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
                                     product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
-                                    Toast.makeText(getApplicationContext(), "Product Added Successfully to Male Body Category", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Product Added Successfully to Male body Category", Toast.LENGTH_SHORT).show();
                                     DatabaseReference Insertref2=FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                                     databaseReference.child(ID).setValue(product);
                                     IDx++;
@@ -187,37 +187,6 @@ public class Add_Product extends AppCompatActivity {
 
                                 }
                             });
-                            String ImageId;
-                            //ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-
-                            final StorageReference reference = storageReference.child(imageUri.getLastPathSegment());
-
-                            /*UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                            Task<Uri> uriTask = UploadTask.continueWith(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
-                                                @Override
-                                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                                    if (!task.isSuccessful()){
-                                                        throw task.getException();
-                                                    }
-                                                    downloadImageURL = storageReference.getDownloadUrl().toString();
-                                                    return storageReference.getDownloadUrl();
-                                                }
-                                            });
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully" + exception, Toast.LENGTH_SHORT).show();
-                                        }
-                                    });*/
                         }
                     }
                 });
@@ -257,34 +226,37 @@ public class Add_Product extends AppCompatActivity {
                             Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Male Hair Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
+                            DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                            readref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String ID= snapshot.child("IntitalVal").getValue().toString();
+                                    int IDx;
+                                    IDx=Integer.parseInt(ID);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    double price = Double.parseDouble(editText3.getText().toString());
+                                    product.setID(ID);
+                                    product.setImageId(downloadImageURL);
+                                    product.setName(editText1.getText().toString().trim());
+                                    product.setBrand(editText2.getText().toString().trim());
+                                    product.setPrice(price);
+                                    Toast.makeText(getApplicationContext(), "Product Added Successfully to Male hair Category", Toast.LENGTH_SHORT).show();
+                                    DatabaseReference Insertref2=FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                                    databaseReference.child(ID).setValue(product);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    Insertref2.child("IntitalVal").setValue(ID);
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                                    clearDataAfterInsert();
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
                     }
                 });
@@ -326,34 +298,37 @@ public class Add_Product extends AppCompatActivity {
                             Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Female Body Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
+                            DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                            readref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String ID= snapshot.child("IntitalVal").getValue().toString();
+                                    int IDx;
+                                    IDx=Integer.parseInt(ID);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    double price = Double.parseDouble(editText3.getText().toString());
+                                    product.setID(ID);
+                                    product.setImageId(downloadImageURL);
+                                    product.setName(editText1.getText().toString().trim());
+                                    product.setBrand(editText2.getText().toString().trim());
+                                    product.setPrice(price);
+                                    Toast.makeText(getApplicationContext(), "Product Added Successfully to Female body Category", Toast.LENGTH_SHORT).show();
+                                    DatabaseReference Insertref2=FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                                    databaseReference.child(ID).setValue(product);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    Insertref2.child("IntitalVal").setValue(ID);
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                                    clearDataAfterInsert();
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
                     }
                 });
@@ -390,34 +365,37 @@ public class Add_Product extends AppCompatActivity {
                             Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Female Hair Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
+                            DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                            readref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String ID= snapshot.child("IntitalVal").getValue().toString();
+                                    int IDx;
+                                    IDx=Integer.parseInt(ID);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    double price = Double.parseDouble(editText3.getText().toString());
+                                    product.setID(ID);
+                                    product.setImageId(downloadImageURL);
+                                    product.setName(editText1.getText().toString().trim());
+                                    product.setBrand(editText2.getText().toString().trim());
+                                    product.setPrice(price);
+                                    Toast.makeText(getApplicationContext(), "Product Added Successfully to Female hair Category", Toast.LENGTH_SHORT).show();
+                                    DatabaseReference Insertref2=FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                                    databaseReference.child(ID).setValue(product);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    Insertref2.child("IntitalVal").setValue(ID);
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                                    clearDataAfterInsert();
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
                     }
                 });
@@ -458,7 +436,7 @@ public class Add_Product extends AppCompatActivity {
                             Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            DatabaseReference  readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                            DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -467,7 +445,7 @@ public class Add_Product extends AppCompatActivity {
                                     IDx=Integer.parseInt(ID);
                                     IDx++;
                                     ID=Integer.toString(IDx);
-                                    Double price = Double.parseDouble(editText3.getText().toString().trim());
+                                    double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
                                     product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
@@ -489,27 +467,6 @@ public class Add_Product extends AppCompatActivity {
 
                                 }
                             });
-                            String ImageId;
-                            //ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-
-                            final StorageReference reference = storageReference.child(imageUri.getLastPathSegment());
-
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
                         }
                     }
                 });
@@ -547,7 +504,7 @@ public class Add_Product extends AppCompatActivity {
                             Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            DatabaseReference  readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                            DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -556,7 +513,7 @@ public class Add_Product extends AppCompatActivity {
                                     IDx=Integer.parseInt(ID);
                                     IDx++;
                                     ID=Integer.toString(IDx);
-                                    Double price = Double.parseDouble(editText3.getText().toString().trim());
+                                    double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
                                     product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
@@ -578,37 +535,7 @@ public class Add_Product extends AppCompatActivity {
 
                                 }
                             });
-                            String ImageId;
-                            //ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
 
-                            final StorageReference reference = storageReference.child(imageUri.getLastPathSegment());
-
-                            /*UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                            Task<Uri> uriTask = UploadTask.continueWith(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
-                                                @Override
-                                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                                    if (!task.isSuccessful()){
-                                                        throw task.getException();
-                                                    }
-                                                    downloadImageURL = storageReference.getDownloadUrl().toString();
-                                                    return storageReference.getDownloadUrl();
-                                                }
-                                            });
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully" + exception, Toast.LENGTH_SHORT).show();
-                                        }
-                                    });*/
                         }
                     }
                 });
@@ -646,34 +573,37 @@ public class Add_Product extends AppCompatActivity {
                             Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
-                            String ImageId;
-                            ImageId = System.currentTimeMillis() + "." + GetExtension(imageUri);
-                            Double price = Double.parseDouble(editText3.getText().toString().trim());
-                            product.setImageId(ImageId);
-                            product.setName(editText1.getText().toString().trim());
-                            product.setBrand(editText2.getText().toString().trim());
-                            product.setPrice(price);
-                            Toast.makeText(getApplicationContext(), "Product Added Successfully to Baby and Kids Wash Category", Toast.LENGTH_SHORT).show();
-                            databaseReference.push().setValue(product);
-                            clearDataAfterInsert();
-                            final StorageReference reference = storageReference.child(ImageId);
+                            DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                            readref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String ID= snapshot.child("IntitalVal").getValue().toString();
+                                    int IDx;
+                                    IDx=Integer.parseInt(ID);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    double price = Double.parseDouble(editText3.getText().toString());
+                                    product.setID(ID);
+                                    product.setImageId(downloadImageURL);
+                                    product.setName(editText1.getText().toString().trim());
+                                    product.setBrand(editText2.getText().toString().trim());
+                                    product.setPrice(price);
+                                    Toast.makeText(getApplicationContext(), "Product Added Successfully to Baby and kids wash Category", Toast.LENGTH_SHORT).show();
+                                    DatabaseReference Insertref2=FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
+                                    databaseReference.child(ID).setValue(product);
+                                    IDx++;
+                                    ID=Integer.toString(IDx);
+                                    Insertref2.child("IntitalVal").setValue(ID);
 
-                            UploadTask = reference.putFile(imageUri)
-                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Get a URL to the uploaded content
-                                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                            Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
-                                            // Handle unsuccessful uploads
-                                            Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                                    clearDataAfterInsert();
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
                     }
                 });
@@ -681,97 +611,6 @@ public class Add_Product extends AppCompatActivity {
         }
 
     }
-
-    /*public void ValidateProduct(){
-        productName = editText1.getText().toString();
-        brand = editText2.getText().toString();
-        price = editText3.getText().toString();
-
-        *//* Validations for Adding baby and kids cream product *//*
-        if (imageUri == null){
-            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-            return;
-        } else if (UploadTask != null && UploadTask.isInProgress()) {
-            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-            return;
-        } else if (TextUtils.isEmpty(productName)){
-            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-            return;
-        } else if (TextUtils.isEmpty(brand)){
-            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-            return;
-        } else if (TextUtils.isEmpty(price)){
-            Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-            return;
-        }else {
-            StoreProductDetails();
-        }
-    }
-
-    private String saveCurrentDateFormat, getSaveCurrentTimeFormat,productKey;
-    public void StoreProductDetails() {
-        Calendar calendar = Calendar.getInstance();
-
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy ");
-        saveCurrentDateFormat = currentDate.format(calendar.getTime());
-
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-        getSaveCurrentTimeFormat = currentTime.format(calendar.getTime());
-
-        productKey = saveCurrentDateFormat + getSaveCurrentTimeFormat;
-
-        StorageReference filePath = storageReference.child(imageUri.getLastPathSegment() + productKey);
-
-        final UploadTask uploadTask = filePath.putFile(imageUri);
-
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Add_Product.this,"Image uploaded Unsuccessfully" + e, Toast.LENGTH_SHORT).show();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(Add_Product.this,"Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                    @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if (!task.isSuccessful()){
-                            throw task.getException();
-                        }
-                        downloadImageURL = filePath.getDownloadUrl().toString();
-                        return filePath.getDownloadUrl();
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        StoreDetailsToDatabase();
-                    }
-                });
-            }
-        });
-    }
-
-    public void StoreDetailsToDatabase(){
-        HashMap<String,Object> data = new HashMap<>();
-        data.put("productID", productKey);
-        data.put("name", productName);
-        data.put("brand", brand);
-        data.put("price", price);
-        data.put("image", downloadImageURL);
-
-        databaseReference.child(productKey).updateChildren(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "Product Added Successfully to Baby and Kids Cream Category", Toast.LENGTH_SHORT).show();
-                } else {
-                    String message = task.getException().toString();
-                    Toast.makeText(getApplicationContext(), "Error" + message, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }*/
 
     public void clearDataAfterInsert(){
         editText1.setText("");

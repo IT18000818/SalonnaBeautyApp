@@ -49,7 +49,7 @@ public class Customer_Female_Hair_Products_View extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull Customer_Female_hair_ViewHolder holder, int position, @NonNull Female_Hair_Product model) {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
-                holder.tw_price.setText("Price: " +(int) model.getPrice() + " $");
+                holder.tw_price.setText("Price: " + "Rs. " + model.getPrice());
                 Picasso.get().load(model.getImageId()).into(holder.imageView);
             }
 
