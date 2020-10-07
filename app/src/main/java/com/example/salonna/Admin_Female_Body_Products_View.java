@@ -74,8 +74,9 @@ public class Admin_Female_Body_Products_View extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Admin_Female_Body_Products_View.this, Edit_Product.class);
-                        intent.putExtra("IDFemaleHair",model.getID());
-                        intent.putExtra("FemaleHair",3);
+                        intent.putExtra("IDFemaleBody",model.getID());
+                        intent.putExtra("FemaleBody",3);
+                        intent.putExtra("Category",17); //in order to get in to main female category
                         Toast.makeText(Admin_Female_Body_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }

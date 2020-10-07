@@ -13,7 +13,7 @@ public class Male_Body_Product {
 
     private String Name;
     private String Brand;
-    private double Price;
+    private Double Price;
     private String ImageId;
 
     public Male_Body_Product() {
@@ -35,11 +35,11 @@ public class Male_Body_Product {
         Brand = brand;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         Price = price;
     }
 

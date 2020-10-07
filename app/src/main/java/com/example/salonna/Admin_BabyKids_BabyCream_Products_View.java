@@ -83,7 +83,7 @@ public class Admin_BabyKids_BabyCream_Products_View extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent intent = new Intent(Admin_BabyKids_BabyCream_Products_View.this, Edit_Product.class);
                         intent.putExtra("IDBabyCream",model.getID());
-                        intent.putExtra("BabyCream",7);
+                        intent.putExtra("Category",19); //in order to get in to main Baby and kids category
                         Toast.makeText(Admin_BabyKids_BabyCream_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }

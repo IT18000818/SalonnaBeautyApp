@@ -38,19 +38,6 @@ public class Edit_Product extends AppCompatActivity {
     EditText price;
     Button Save;
 
-    String mProductName;
-    String mProductBrand;
-    String mProductPrice;
-
-    StorageReference storageReference;
-
-    StorageTask UploadTask;
-
-    public Uri imageUri;
-
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,88 +45,14 @@ public class Edit_Product extends AppCompatActivity {
 
         Intent intent = getIntent();
         int category = intent.getIntExtra("Category", 18);
-
-        /*int cater_user_male = intent.getIntExtra("hair", 5);
-
-        int cater_user_female = intent.getIntExtra("femaleHair", 2);
-
-        int babyHair = intent.getIntExtra("babyHair",21);
-
-        int babyWash = intent.getIntExtra("babyWash",23);*/
-
-        Intent intent2 = getIntent();
-        String cream = intent.getStringExtra("BabyCream");
         int male_hair = intent.getIntExtra("MaleHair",2);
-        int female_hair = intent.getIntExtra("FemaleHair",4);
-        int baby_hair = intent.getIntExtra("BabyHair",7);
-        int baby_wash = intent.getIntExtra("BabyWash",9);
-
-        /*productName = (EditText) findViewById(R.id.edit_product_Name);
-        brand = (EditText) findViewById(R.id.edit_product_Brand);
-        price = (EditText) findViewById(R.id.edit_product_Price);
-        Intent i1=getIntent();
-        String ID=i1.getStringExtra("IDBabyCream");
-        Save=findViewById(R.id.button2);
-        Save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UpdateProductsBabyCream();
-            }
-        });
-        DatabaseReference readRef=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
-
-        readRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                productName.setText(snapshot.child("name").getValue().toString());
-                brand.setText(snapshot.child("brand").getValue().toString());
-                price.setText(snapshot.child("price").getValue().toString());
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
-        /*productName = (EditText) findViewById(R.id.edit_product_Name);
-        brand = (EditText) findViewById(R.id.edit_product_Brand);
-        price = (EditText) findViewById(R.id.edit_product_Price);
-        Intent i2=getIntent();
-        String ID2 =i1.getStringExtra("IDBabyWash");
-        Save=findViewById(R.id.button2);
-        Save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UpdateProductsBabyWash();
-            }
-        });
-        DatabaseReference readRef2=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Wash_Product").child(ID);
-
-        readRef2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                productName.setText(snapshot.child("name").getValue().toString());
-                brand.setText(snapshot.child("brand").getValue().toString());
-                price.setText(snapshot.child("price").getValue().toString());
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
+        int female_hair = intent.getIntExtra("FemaleHair",3);
+        int baby_hair = intent.getIntExtra("BabyHair",21);
+        int baby_wash = intent.getIntExtra("BabyWash",22);
 
         /* Category validation method*/
-        SelectUserCategory(male_hair, female_hair,baby_hair,baby_wash, category);
+        SelectUserCategory(category,male_hair, female_hair,baby_hair,baby_wash);
     }
-
-
-
 
     @Override
     protected void onStart() {
@@ -154,7 +67,7 @@ public class Edit_Product extends AppCompatActivity {
         brand = (EditText) findViewById(R.id.edit_product_Brand);
         price = (EditText) findViewById(R.id.edit_product_Price);
         Intent i1=getIntent();
-        String ID=i1.getStringExtra("ID");
+        String ID=i1.getStringExtra("IDMaleHair");
 
         DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Male_Hair_Product").child(ID);
         Male_Hair_Product d1= new Male_Hair_Product();
@@ -175,7 +88,7 @@ public class Edit_Product extends AppCompatActivity {
         brand = (EditText) findViewById(R.id.edit_product_Brand);
         price = (EditText) findViewById(R.id.edit_product_Price);
         Intent i1=getIntent();
-        String ID=i1.getStringExtra("ID");
+        String ID=i1.getStringExtra("IDMaleBody");
 
         DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Male_Body_Product").child(ID);
         Male_Body_Product d1= new Male_Body_Product();
@@ -195,7 +108,7 @@ public class Edit_Product extends AppCompatActivity {
         brand = (EditText) findViewById(R.id.edit_product_Brand);
         price = (EditText) findViewById(R.id.edit_product_Price);
         Intent i1=getIntent();
-        String ID=i1.getStringExtra("ID");
+        String ID=i1.getStringExtra("IDFemaleHair");
 
         DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Female_Hair_Product").child(ID);
         Female_Hair_Product d1= new Female_Hair_Product();
@@ -215,7 +128,7 @@ public class Edit_Product extends AppCompatActivity {
         brand = (EditText) findViewById(R.id.edit_product_Brand);
         price = (EditText) findViewById(R.id.edit_product_Price);
         Intent i1=getIntent();
-        String ID=i1.getStringExtra("ID");
+        String ID=i1.getStringExtra("IDFemaleBody");
 
         DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Female_Body_Product").child(ID);
         Female_Body_Product d1= new Female_Body_Product();
@@ -255,7 +168,7 @@ public class Edit_Product extends AppCompatActivity {
         brand = (EditText) findViewById(R.id.edit_product_Brand);
         price = (EditText) findViewById(R.id.edit_product_Price);
         Intent i1=getIntent();
-        String ID=i1.getStringExtra("ID");
+        String ID=i1.getStringExtra("IDBabyHair");
 
         DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Hair_Product").child(ID);
         BabyAndKids_Hair_Products d1= new BabyAndKids_Hair_Products();
@@ -290,18 +203,18 @@ public class Edit_Product extends AppCompatActivity {
     }
 
     /* User Categorization method */
-    public void SelectUserCategory(int maleHair, int femaleHair, int babyHair, int babyWash,int category) {
+    public void SelectUserCategory(int category,int maleHair, int femaleHair, int babyHair, int babyWash) {
         if (category == 18) {
             Toast.makeText(this, "male", Toast.LENGTH_SHORT);
             /*If male category*/
             if (maleHair == 2) {
-                /*If male body category */
+                /*If male body category*/
 
                 productName = (EditText) findViewById(R.id.edit_product_Name);
                 brand = (EditText) findViewById(R.id.edit_product_Brand);
                 price = (EditText) findViewById(R.id.edit_product_Price);
                 Intent i1 = getIntent();
-                String ID = i1.getStringExtra("ID");
+                String ID = i1.getStringExtra("IDMaleBody");
                 Save = findViewById(R.id.button2);
                 Save.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -329,13 +242,13 @@ public class Edit_Product extends AppCompatActivity {
 
 
             } else {
-                /*If male hair category */
+                /*If male hair category*/
 
                 productName = (EditText) findViewById(R.id.edit_product_Name);
                 brand = (EditText) findViewById(R.id.edit_product_Brand);
                 price = (EditText) findViewById(R.id.edit_product_Price);
                 Intent i1 = getIntent();
-                String ID = i1.getStringExtra("ID");
+                String ID = i1.getStringExtra("IDMaleHair");
                 Save = findViewById(R.id.button2);
                 Save.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -352,7 +265,6 @@ public class Edit_Product extends AppCompatActivity {
                         brand.setText(snapshot.child("brand").getValue().toString());
                         price.setText(snapshot.child("price").getValue().toString());
 
-
                     }
 
                     @Override
@@ -363,18 +275,17 @@ public class Edit_Product extends AppCompatActivity {
 
 
             }
-        }
-        //if female
-        else if (category == 17) {
+            //if female
+        } else if (category == 17) {
             /*If female category*/
-            if (femaleHair == 4) {
+            if (femaleHair == 3) {
                 /*If female body category*/
 
                 productName = (EditText) findViewById(R.id.edit_product_Name);
                 brand = (EditText) findViewById(R.id.edit_product_Brand);
                 price = (EditText) findViewById(R.id.edit_product_Price);
                 Intent i1 = getIntent();
-                String ID = i1.getStringExtra("ID");
+                String ID = i1.getStringExtra("IDFemaleBody");
                 Save = findViewById(R.id.button2);
                 Save.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -407,7 +318,7 @@ public class Edit_Product extends AppCompatActivity {
                 brand = (EditText) findViewById(R.id.edit_product_Brand);
                 price = (EditText) findViewById(R.id.edit_product_Price);
                 Intent i1 = getIntent();
-                String ID = i1.getStringExtra("ID");
+                String ID = i1.getStringExtra("IDFemaleHair");
                 Save = findViewById(R.id.button2);
                 Save.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -433,17 +344,16 @@ public class Edit_Product extends AppCompatActivity {
                     }
                 });
             }
-        }
-        //if baby and kids
-        else {
-            if (babyHair == 7) {
+            //if baby and kids
+        } else {
+            if (babyHair == 22) {
                 /*If baby hair category */
 
                 productName = (EditText) findViewById(R.id.edit_product_Name);
                 brand = (EditText) findViewById(R.id.edit_product_Brand);
                 price = (EditText) findViewById(R.id.edit_product_Price);
                 Intent i1 = getIntent();
-                String ID = i1.getStringExtra("ID");
+                String ID = i1.getStringExtra("IDBabyHair");
                 Save = findViewById(R.id.button2);
                 Save.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -468,22 +378,22 @@ public class Edit_Product extends AppCompatActivity {
 
                     }
                 });
-            } else if (babyWash == 9) {
-                /* If baby cream category */
+            } else if (babyWash == 24) {
+                /*If baby wash category */
 
                 productName = (EditText) findViewById(R.id.edit_product_Name);
                 brand = (EditText) findViewById(R.id.edit_product_Brand);
                 price = (EditText) findViewById(R.id.edit_product_Price);
                 Intent i1 = getIntent();
-                String ID = i1.getStringExtra("ID");
+                String ID = i1.getStringExtra("IDBabyWash");
                 Save = findViewById(R.id.button2);
                 Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        UpdateProductsBabyCream();
+                        UpdateProductsBabyWash();
                     }
                 });
-                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Wash_Product").child(ID);
 
                 readRef.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -501,21 +411,22 @@ public class Edit_Product extends AppCompatActivity {
                     }
                 });
             } else {
-                /*If baby wash category */
+
+                /* If baby cream category */
 
                 productName = (EditText) findViewById(R.id.edit_product_Name);
                 brand = (EditText) findViewById(R.id.edit_product_Brand);
                 price = (EditText) findViewById(R.id.edit_product_Price);
                 Intent i1 = getIntent();
-                String ID = i1.getStringExtra("ID");
+                String ID = i1.getStringExtra("IDBabyCream");
                 Save = findViewById(R.id.button2);
                 Save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        UpdateProductsBabyWash();
+                        UpdateProductsBabyCream();
                     }
                 });
-                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Wash_Product").child(ID);
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("BabyAndKids_Cream_Product").child(ID);
 
                 readRef.addValueEventListener(new ValueEventListener() {
                     @Override

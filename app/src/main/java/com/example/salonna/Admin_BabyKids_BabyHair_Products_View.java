@@ -92,7 +92,8 @@ public class Admin_BabyKids_BabyHair_Products_View extends AppCompatActivity {
                         Intent intent = new Intent(Admin_BabyKids_BabyHair_Products_View.this, Edit_Product.class);
                         Toast.makeText(Admin_BabyKids_BabyHair_Products_View.this, "Navigating to Edit page", Toast.LENGTH_SHORT).show();
                         intent.putExtra("IDBabyHair", model.getID());
-                        intent.putExtra("BabyHair", 5);
+                        intent.putExtra("BabyHair", 22);
+                        intent.putExtra("Category", 19);    //in order to get in to main Baby and kids category
                         startActivity(intent);
                     }
                 });

@@ -99,7 +99,7 @@ public class Admin_Male_Hair_Products_View extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent intent = new Intent(Admin_Male_Hair_Products_View.this, Edit_Product.class);
                         intent.putExtra("IDMaleHair",model.getID());
-                        intent.putExtra("MaleHair",1);
+                        intent.putExtra("MaleHair",4);
                         Toast.makeText(Admin_Male_Hair_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }

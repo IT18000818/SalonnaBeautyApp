@@ -13,7 +13,7 @@ public class Female_Body_Product {
     private String ID;
     private String Name;
     private String Brand;
-    private double Price;
+    private Double Price;
     private String ImageId;
 
 
@@ -36,11 +36,11 @@ public class Female_Body_Product {
         Brand = brand;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         Price = price;
     }
 

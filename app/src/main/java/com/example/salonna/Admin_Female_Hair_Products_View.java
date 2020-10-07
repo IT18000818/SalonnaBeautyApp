@@ -75,6 +75,7 @@ public class Admin_Female_Hair_Products_View extends AppCompatActivity {
                         Intent intent = new Intent(Admin_Female_Hair_Products_View.this, Edit_Product.class);
                         intent.putExtra("IDFemaleHair",model.getID());
                         intent.putExtra("FemaleHair",4);
+                        intent.putExtra("Category",17); //in order to get in to main female category
                         Toast.makeText(Admin_Female_Hair_Products_View.this, "Navigating to edit product", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }

@@ -79,7 +79,8 @@ public class Admin_BabyKids_BabyWash_Products_View extends AppCompatActivity {
                         Intent intent = new Intent(Admin_BabyKids_BabyWash_Products_View.this, Edit_Product.class);
                         Toast.makeText(Admin_BabyKids_BabyWash_Products_View.this, "Navigating to Edit page", Toast.LENGTH_SHORT).show();
                         intent.putExtra("IDBabyWash", model.getID());
-                        intent.putExtra("BabyWash", 6);
+                        intent.putExtra("BabyWash", 24);
+                        intent.putExtra("Category",19); //in order to get in to main Baby and kids category
                         startActivity(intent);
                     }
                 });
