@@ -80,6 +80,12 @@ public class Admin_Female_Hair_Products_View extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+                holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Delete(model.getID());
+                    }
+                });
             }
 
             @NonNull
@@ -94,5 +100,12 @@ public class Admin_Female_Hair_Products_View extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    public void Delete(String ID){
+        DatabaseReference deleteRef= FirebaseDatabase.getInstance().getReference().child("Female_Hair_Product").child(ID);
+        deleteRef.removeValue();
+        Toast.makeText(this, "Delete was successful", Toast.LENGTH_SHORT).show();
+
     }
 }

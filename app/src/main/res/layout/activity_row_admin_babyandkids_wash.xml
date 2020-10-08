@@ -67,6 +67,15 @@
             android:onClick="AddProductDetailsBabyWash"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/btn_delete_wash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="265dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/delete_btn1"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
 

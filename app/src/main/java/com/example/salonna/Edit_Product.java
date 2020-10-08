@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class Edit_Product extends AppCompatActivity {
     EditText productName;
     EditText brand;
     EditText price;
-    Button Save;
+    Button Save, btn_edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,9 @@ public class Edit_Product extends AppCompatActivity {
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Edit_Product.this,Admin_Male_Hair_Products_View.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
     }
 
 
@@ -99,6 +103,9 @@ public class Edit_Product extends AppCompatActivity {
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Edit_Product.this,Admin_Male_Body_Products_View.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
     }
 
     /*update female hair products*/
@@ -119,6 +126,9 @@ public class Edit_Product extends AppCompatActivity {
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Edit_Product.this,Admin_Female_Hair_Products_View.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
     }
 
     /*update female body products*/
@@ -139,6 +149,9 @@ public class Edit_Product extends AppCompatActivity {
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Edit_Product.this,Admin_Female_Body_Products_View.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
     }
 
 
@@ -160,6 +173,9 @@ public class Edit_Product extends AppCompatActivity {
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Edit_Product.this,Admin_BabyKids_BabyCream_Products_View.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
     }
 
     /*update baby hair products*/
@@ -179,6 +195,9 @@ public class Edit_Product extends AppCompatActivity {
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Edit_Product.this,Admin_BabyKids_BabyHair_Products_View.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
 
     }
 
@@ -200,6 +219,9 @@ public class Edit_Product extends AppCompatActivity {
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Edit_Product.this,Admin_BabyKids_BabyWash_Products_View.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
     }
 
     /* User Categorization method */
@@ -227,11 +249,10 @@ public class Edit_Product extends AppCompatActivity {
                 readRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Male_Hair_Product m1 = new Male_Hair_Product();
                         productName.setText(snapshot.child("name").getValue().toString());
                         brand.setText(snapshot.child("brand").getValue().toString());
                         price.setText(snapshot.child("price").getValue().toString());
-
-
                     }
 
                     @Override
@@ -401,8 +422,6 @@ public class Edit_Product extends AppCompatActivity {
                         productName.setText(snapshot.child("name").getValue().toString());
                         brand.setText(snapshot.child("brand").getValue().toString());
                         price.setText(snapshot.child("price").getValue().toString());
-
-
                     }
 
                     @Override
@@ -434,8 +453,6 @@ public class Edit_Product extends AppCompatActivity {
                         productName.setText(snapshot.child("name").getValue().toString());
                         brand.setText(snapshot.child("brand").getValue().toString());
                         price.setText(snapshot.child("price").getValue().toString());
-
-
                     }
 
                     @Override
@@ -443,6 +460,10 @@ public class Edit_Product extends AppCompatActivity {
 
                     }
                 });
+                /*if (btn_edit.isSelected()){
+                    Intent intent = new Intent(Edit_Product.this, Admin_BabyKids_BabyCream_Products_View.class);
+
+                }*/
 
             }
         }

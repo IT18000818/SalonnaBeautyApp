@@ -20,14 +20,4 @@ public class Admin_Row_BabyandKids_Cream extends AppCompatActivity {
         btn_edit = findViewById(R.id.btn_edit_cream);
     }
 
-    public void EditDetails(View view){
-        btn_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Admin_Row_BabyandKids_Cream.this, Edit_Product.class);
-                startActivity(intent);
-            }
-        });
-    }
-
 }

@@ -69,6 +69,9 @@ public class Admin_BabyKids_BabyCream_Products_View extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        View();
+    }
+    public void View(){
         FirebaseRecyclerOptions<BabyAndKids_Cream_Products> options = new FirebaseRecyclerOptions.Builder<BabyAndKids_Cream_Products>().setQuery(databaseReference, BabyAndKids_Cream_Products.class).build();
 
         FirebaseRecyclerAdapter<BabyAndKids_Cream_Products,Admin_BabyAndKids_baby_Cream_ViewHolder> adapter = new FirebaseRecyclerAdapter<BabyAndKids_Cream_Products, Admin_BabyAndKids_baby_Cream_ViewHolder>(options) {
