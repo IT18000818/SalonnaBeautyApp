@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewAppointments"></activity>
-        <activity android:name=".AppointmentDetails"></activity>
+        <activity android:name=".JoinNow"></activity>
+        <activity android:name=".ViewAppointments" />
+        <activity android:name=".AppointmentDetails" />
         <activity android:name=".Appointment" />
         <activity android:name=".Beautician" />
         <activity android:name=".Bridal" />
