@@ -53,7 +53,7 @@ public class beauticianProfile extends AppCompatActivity {
         Email = findViewById(R.id.email1);
         Services = findViewById(R.id.service1);
 
-        beautician beautician= new beautician();
+        final beautician beautician= new beautician();
 
         update = findViewById(R.id.button6);
         delete = findViewById(R.id.button7);
@@ -124,19 +124,19 @@ public class beauticianProfile extends AppCompatActivity {
                                else {
 
                                }*/
-                               ss.setNic_id(NIC.getText().toString().trim());
-                               ss.setFirst_name(FirstName.getText().toString().trim());
-                               ss.setLast_name(LastName.getText().toString().trim());
-                               ss.setBirthday(Birthday.getText().toString().trim());
-                               ss.setAddress(Address.getText().toString().trim());
-                               ss.setEmail(Email.getText().toString().trim());
-                               ss.setServices(Services.getText().toString().trim());
+                               beautician.setNic_id(NIC.getText().toString().trim());
+                               beautician.setFirst_name(FirstName.getText().toString().trim());
+                               beautician.setLast_name(LastName.getText().toString().trim());
+                               beautician.setBirthday(Birthday.getText().toString().trim());
+                               beautician.setAddress(Address.getText().toString().trim());
+                               beautician.setEmail(Email.getText().toString().trim());
+                               beautician.setServices(Services.getText().toString().trim());
 
 
                                DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("beautician").child(lastKey);
-                               dbref.setValue(ss);
+                               dbref.setValue(beautician);
 
-                               Toast.makeText(getApplicationContext(),"Updated", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(getApplicationContext(),"Updated your profile details Successfully", Toast.LENGTH_SHORT).show();
 
 
                            } catch (NumberFormatException e){
@@ -148,17 +148,17 @@ public class beauticianProfile extends AppCompatActivity {
                        }
                        if (dataSnapshot.hasChild("Lastbeautician")){
                            try{
-                               ss.setNic_id(NIC.getText().toString().trim());
-                               ss.setFirst_name(FirstName.getText().toString().trim());
-                               ss.setLast_name(LastName.getText().toString().trim());
-                               ss.setBirthday(Birthday.getText().toString().trim());
-                               ss.setAddress(Address.getText().toString().trim());
-                               ss.setEmail(Email.getText().toString().trim());
-                               ss.setServices(Services.getText().toString().trim());
+                               beautician.setNic_id(NIC.getText().toString().trim());
+                               beautician.setFirst_name(FirstName.getText().toString().trim());
+                               beautician.setLast_name(LastName.getText().toString().trim());
+                               beautician.setBirthday(Birthday.getText().toString().trim());
+                               beautician.setAddress(Address.getText().toString().trim());
+                               beautician.setEmail(Email.getText().toString().trim());
+                               beautician.setServices(Services.getText().toString().trim());
 
 
                                DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("beautician").child("Lastbeautician");
-                               dbref.setValue(ss);
+                               dbref.setValue(beautician);
 
                                Toast.makeText(getApplicationContext(),"Updated", Toast.LENGTH_SHORT).show();
 

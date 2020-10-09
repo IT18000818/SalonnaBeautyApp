@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/group_2"
+    tools:context=".appintmentStart">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="207dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="102dp"
+        android:text="New Appoinment"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSartAppinmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="79dp"
+        android:text="Start"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnEndAppinmt"
+        app:layout_constraintEnd_toStartOf="@+id/btnEndAppinmt"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEndAppinmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="133dp"
+        android:text="End"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSartAppinmt"
+        app:layout_constraintTop_toBottomOf="@+id/hourRate" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="122dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="54dp"
+        android:text="Enter Hourly Rate"
+        android:textColor="#000000"
+        app:layout_constraintBaseline_toBaselineOf="@+id/hourRate"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/hourRate"
+        android:layout_width="122dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="50dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/btnEndAppinmt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
