@@ -1,10 +1,24 @@
 package com.example.sallonaapp;
 
 public class Treatment {
+    private String ID;
     private String name;
     private String date;
     private String time;
     private String phone;
+
+    public Treatment() {
+
+
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public String getName() {
         return name;
@@ -36,10 +50,5 @@ public class Treatment {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Treatment() {
-
-
     }
 }

@@ -29,6 +29,7 @@ public class Activity10 extends AppCompatActivity {
     Button confirm;
 
     private static final String TAG = "Activity10";
+
     String treatmentID;
     String lastKey;
     EditText Name, Date, Time, Phone;
@@ -42,19 +43,77 @@ public class Activity10 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_10);
 
-        Name = findViewById(R.id.name);
-        Date = findViewById(R.id.date);
-        Time = findViewById(R.id.time);
-        Phone = findViewById(R.id.phone);
+        Name = findViewById(R.id.update_name);
+        Date = findViewById(R.id.update_date);
+        Time = findViewById(R.id.update_time);
+        Phone = findViewById(R.id.update_phone);
 
-        Treatment treatment = new Treatment();
+        final Treatment treatment = new Treatment();
 
-        update = findViewById(R.id.button18);
+        update = findViewById(R.id.button_update);
         delete = findViewById(R.id.button20);
         confirm = findViewById(R.id.button21);
 
 
-        dbRef = FirebaseDatabase.getInstance().getReference().child("Treatment")/*.child("Lasttreatment")*/;
+        Name = (EditText) findViewById(R.id.update_name);
+        Date = (EditText) findViewById(R.id.update_date);
+        Time = (EditText) findViewById(R.id.update_time);
+        Phone = (EditText) findViewById(R.id.update_phone);
+        Intent i1 = getIntent();
+        String ID = i1.getStringExtra("ID");
+        update = findViewById(R.id.button_update);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UpdateProductsMaleBody();
+            }
+        });
+        DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Treatment").child(ID);
+
+        readRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Name.setText(snapshot.child("name").getValue().toString());
+                Date.setText(snapshot.child("date").getValue().toString());
+                Time.setText(snapshot.child("time").getValue().toString());
+                Phone.setText(snapshot.child("phone").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    public void UpdateProductsMaleBody() {
+        Name = (EditText) findViewById(R.id.update_name);
+        Date = (EditText) findViewById(R.id.update_date);
+        Time = (EditText) findViewById(R.id.update_time);
+        Phone = (EditText) findViewById(R.id.update_phone);
+        Intent i1=getIntent();
+        String ID=i1.getStringExtra("ID");
+
+        DatabaseReference UpdateRef=FirebaseDatabase.getInstance().getReference().child("Treatment").child(ID);
+        Treatment t1= new Treatment();
+        t1.setName(Name.getText().toString());
+        t1.setDate(Date.getText().toString());
+        t1.setTime(Time.getText().toString());
+        t1.setPhone(Phone.getText().toString());
+
+        t1.setID(ID);
+        UpdateRef.setValue(t1);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+        Intent il = new Intent(Activity10.this,ViewActivity.class);
+        Toast.makeText(this, "Back to all products", Toast.LENGTH_SHORT).show();
+        startActivity(il);
+    }
+
+
+
+
+/*        dbRef = FirebaseDatabase.getInstance().getReference().child("Treatment").child("Lasttreatment");
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -98,7 +157,7 @@ public class Activity10 extends AppCompatActivity {
                         if (dataSnapshot.hasChild(lastKey)) {
 
                             try {
-                            /*if (TextUtils.isEmpty(Name.getText().toString()))
+                            *//*if (TextUtils.isEmpty(Name.getText().toString()))
                                 Toast.makeText(getApplicationContext(), "please enter your name", Toast.LENGTH_SHORT).show();
                             else if (TextUtils.isEmpty(Date.getText().toString()))
                                 Toast.makeText(getApplicationContext(), "please enter your date", Toast.LENGTH_SHORT).show();
@@ -107,12 +166,12 @@ public class Activity10 extends AppCompatActivity {
                             else if (TextUtils.isEmpty(Phone.getText().toString()))
                                 Toast.makeText(getApplicationContext(), "please enter your phone", Toast.LENGTH_SHORT).show();
                             else {
-                            }*/
+                            }*//*
 
                                 trt.setName(Name.getText().toString().trim());
-                                trt.setName(Date.getText().toString().trim());
-                                trt.setName(Time.getText().toString().trim());
-                                trt.setName(Phone.getText().toString().trim());
+                                trt.setDate(Date.getText().toString().trim());
+                                trt.setTime(Time.getText().toString().trim());
+                                trt.setPhone(Phone.getText().toString().trim());
 
                                 DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Treatment").child("lastTreatment");
                                 dbref.setValue(trt);
@@ -130,9 +189,9 @@ public class Activity10 extends AppCompatActivity {
                         if (dataSnapshot.hasChild("LastTreatment")) {
                             try {
                                 trt.setName(Name.getText().toString().trim());
-                                trt.setName(Date.getText().toString().trim());
-                                trt.setName(Time.getText().toString().trim());
-                                trt.setName(Phone.getText().toString().trim());
+                                trt.setDate(Date.getText().toString().trim());
+                                trt.setTime(Time.getText().toString().trim());
+                                trt.setPhone(Phone.getText().toString().trim());
 
                                 DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Treatment").child("LastTreatment");
                                 dbref.setValue(trt);
@@ -223,11 +282,10 @@ public class Activity10 extends AppCompatActivity {
                 dialog = builder.create();
                 dialog.show();
             }
-        });
+        });*/
 
 
     }
-}
 
 
 
