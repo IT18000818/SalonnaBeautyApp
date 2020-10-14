@@ -30,11 +30,11 @@
         <activity android:name=".MyCart" />
         <activity android:name=".Add_Product" />
         <activity android:name=".Edit_Product" />
-        <activity android:name=".Customer_Category_selection" />
+        <activity android:name=".Admin_Customer_Category_selection" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MakePayment" />
         <activity android:name=".Login" />
-        <activity android:name=".Admin_Customer_Category_selection">
+        <activity android:name=".Customer_Category_selection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

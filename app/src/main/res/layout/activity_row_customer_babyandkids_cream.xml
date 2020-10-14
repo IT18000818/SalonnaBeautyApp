@@ -57,5 +57,12 @@
             android:textColor="@android:color/black"
             android:textSize="18dp" />
 
+        <Button
+            android:id="@+id/add_to_cart_c_baby_cream"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="215dp"
+            android:text="Add to Cart" />
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

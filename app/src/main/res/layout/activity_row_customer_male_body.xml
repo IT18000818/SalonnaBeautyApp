@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="265dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -55,9 +55,14 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="180dp"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
+            android:textSize="18dp" />
 
-            />
+        <Button
+            android:id="@+id/add_to_cart_c_male_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="215dp"
+            android:text="Add to Cart" />
 
 
     </RelativeLayout>
