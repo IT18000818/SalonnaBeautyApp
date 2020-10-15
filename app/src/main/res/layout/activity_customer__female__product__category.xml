@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark"
     tools:context=".Customer_Female_Product_Category">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/category"
+        android:textColor="@android:color/white"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,21 +28,27 @@
         android:layout_height="250dp"
         android:onClick="ButtonClickFemaleHair"
         android:text="@string/hair"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_orange_light"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.264"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/btn_female_body"
         android:layout_width="307dp"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="@android:color/white"
         android:layout_height="250dp"
         android:onClick="ButtonClickFemaleBody"
         android:text="@string/body"
         android:textSize="24sp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

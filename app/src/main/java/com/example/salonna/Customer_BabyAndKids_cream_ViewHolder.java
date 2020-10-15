@@ -20,6 +20,5 @@ public class Customer_BabyAndKids_cream_ViewHolder extends RecyclerView.ViewHold
         tw_title = (TextView)itemView.findViewById(R.id.C_cream_title);
         tw_brand = (TextView)itemView.findViewById(R.id.C_cream_brand);
         tw_price = (TextView)itemView.findViewById(R.id.C_cream_price);
-        imageView = (ImageView)itemView.findViewById(R.id.C_image_cream);
     }
 }

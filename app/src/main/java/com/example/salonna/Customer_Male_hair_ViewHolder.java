@@ -1,6 +1,7 @@
 package com.example.salonna;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,6 @@ public class Customer_Male_hair_ViewHolder extends RecyclerView.ViewHolder{
         tw_title = (TextView)itemView.findViewById(R.id.Cmale_hair_title);
         tw_brand = (TextView)itemView.findViewById(R.id.Cmale_hair_brand);
         tw_price = (TextView)itemView.findViewById(R.id.Cmale_hair_price);
-        imageView = (ImageView)itemView.findViewById(R.id.image_Cmale_hair);
+
     }
 }

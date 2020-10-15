@@ -19,6 +19,5 @@ public class Customer_BabyAndKids_hair_ViewHolder extends RecyclerView.ViewHolde
         tw_title = (TextView)itemView.findViewById(R.id.C_baby_hair_title);
         tw_brand = (TextView)itemView.findViewById(R.id.C_baby_hair_brand);
         tw_price = (TextView)itemView.findViewById(R.id.C_baby_hair_price);
-        imageView = (ImageView)itemView.findViewById(R.id.C_baby_image_hair);
     }
 }

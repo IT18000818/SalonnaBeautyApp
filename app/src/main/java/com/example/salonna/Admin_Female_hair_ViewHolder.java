@@ -21,7 +21,6 @@ public class Admin_Female_hair_ViewHolder extends RecyclerView.ViewHolder {
         tw_title = (TextView) itemView.findViewById(R.id.female_hair_title);
         tw_brand = (TextView) itemView.findViewById(R.id.female_hair_brand);
         tw_price = (TextView) itemView.findViewById(R.id.female_hair_price);
-        imageView = (ImageView) itemView.findViewById(R.id.image_female_hair);
         btn_edit = (Button) itemView.findViewById(R.id.btn_edit_female_hair);
         btn_delete = (Button) itemView.findViewById(R.id.btn_delete_female_hair);
     }

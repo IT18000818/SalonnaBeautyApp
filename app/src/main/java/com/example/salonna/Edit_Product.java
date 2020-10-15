@@ -37,7 +37,7 @@ public class Edit_Product extends AppCompatActivity {
     EditText productName;
     EditText brand;
     EditText price;
-    Button Save, btn_edit;
+    Button Save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,6 @@ public class Edit_Product extends AppCompatActivity {
         d1.setBrand(brand.getText().toString());
         d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
-        d1.setImageId("asdasd");
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
@@ -99,7 +98,6 @@ public class Edit_Product extends AppCompatActivity {
         d1.setBrand(brand.getText().toString());
         d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
-        d1.setImageId("asdasd");
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
@@ -122,7 +120,6 @@ public class Edit_Product extends AppCompatActivity {
         d1.setBrand(brand.getText().toString());
         d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
-        d1.setImageId("asdasd");
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
@@ -145,7 +142,6 @@ public class Edit_Product extends AppCompatActivity {
         d1.setBrand(brand.getText().toString());
         d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
-        d1.setImageId("asdasd");
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
@@ -169,7 +165,6 @@ public class Edit_Product extends AppCompatActivity {
         d1.setBrand(brand.getText().toString());
         d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
-        d1.setImageId("asdasd");
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
@@ -191,7 +186,6 @@ public class Edit_Product extends AppCompatActivity {
         d1.setBrand(brand.getText().toString());
         d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
-        d1.setImageId("asdasd");
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
@@ -215,7 +209,6 @@ public class Edit_Product extends AppCompatActivity {
         d1.setBrand(brand.getText().toString());
         d1.setPrice(Double.parseDouble(price.getText().toString()));
         d1.setName(productName.getText().toString());
-        d1.setImageId("asdasd");
         d1.setID(ID);
         UpdateRef.setValue(d1);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
@@ -460,12 +453,10 @@ public class Edit_Product extends AppCompatActivity {
 
                     }
                 });
-                /*if (btn_edit.isSelected()){
-                    Intent intent = new Intent(Edit_Product.this, Admin_BabyKids_BabyCream_Products_View.class);
-
-                }*/
 
             }
         }
     }
+
+
 }

@@ -44,15 +44,11 @@ public class Add_Product extends AppCompatActivity {
     EditText editText2;
     EditText editText3;
 
-    Button btn_choose,btn_add;
-    ImageView imageView;
-    StorageReference storageReference;
+    Button btn_add;
 
-    StorageTask UploadTask;
 
-    public Uri imageUri;
 
-    String downloadImageURL, productName, brand, price;
+    String productName, brand, price;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -73,49 +69,18 @@ public class Add_Product extends AppCompatActivity {
 
         int babyWash = intent.getIntExtra("babyWash",23);
 
-        /* Storage instance initialization */
-        storageReference = FirebaseStorage.getInstance().getReference().child("Images");
 
         /* Edit text declaration */
         editText1 = (EditText) findViewById(R.id.editTextTextPersonName2);
         editText2 = (EditText) findViewById(R.id.editTextTextPersonName3);
         editText3 = (EditText) findViewById(R.id.editTextNumberDecimal);
 
-        /* Button declaration */
-        btn_choose = findViewById(R.id.choose_image);
-        btn_add = findViewById(R.id.upload_image);
 
-        /* ImageView declaration */
-        imageView = findViewById(R.id.product_imageView);
+        btn_add = findViewById(R.id.add_product);
 
         /* Category validation method*/
         SelectUserCategory(category, cater_user_male, cater_user_female,babyHair,babyWash);
 
-    }
-
-    /* Image get Extension */
-    public String GetExtension(Uri uri){
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-    }
-
-    /* Choose image file function */
-    public void ChooseFile(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
-            imageUri = data.getData();
-            imageView.setImageURI(imageUri);
-        }
     }
 
     public void SelectUserCategory(int category, int maleHair, int femaleHair, int babyHair, int babyWash) {
@@ -125,12 +90,7 @@ public class Add_Product extends AppCompatActivity {
             if (maleHair == 5) {
                 final Male_Body_Product product = new Male_Body_Product();
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ChooseFile();
-                    }
-                });
+
 
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -149,12 +109,6 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -167,7 +121,6 @@ public class Add_Product extends AppCompatActivity {
                                     ID=Integer.toString(IDx);
                                     double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
-                                    product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
@@ -195,12 +148,12 @@ public class Add_Product extends AppCompatActivity {
             } else {
                 final Male_Hair_Product product = new Male_Hair_Product();
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                /*btn_choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         ChooseFile();
                     }
-                });
+                });*/
 
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -219,12 +172,6 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -237,7 +184,6 @@ public class Add_Product extends AppCompatActivity {
                                     ID=Integer.toString(IDx);
                                     double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
-                                    product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
@@ -268,12 +214,12 @@ public class Add_Product extends AppCompatActivity {
             if (femaleHair == 2) {
                 final Female_Body_Product product = new Female_Body_Product();
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                /*btn_choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         ChooseFile();
                     }
-                });
+                });*/
 
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -291,12 +237,6 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -309,7 +249,6 @@ public class Add_Product extends AppCompatActivity {
                                     ID=Integer.toString(IDx);
                                     double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
-                                    product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
@@ -335,12 +274,12 @@ public class Add_Product extends AppCompatActivity {
             } else {
                 final Female_Hair_Product product = new Female_Hair_Product();
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+               /* btn_choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         ChooseFile();
                     }
-                });
+                });*/
 
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -358,12 +297,6 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -376,7 +309,6 @@ public class Add_Product extends AppCompatActivity {
                                     ID=Integer.toString(IDx);
                                     double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
-                                    product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
@@ -406,12 +338,12 @@ public class Add_Product extends AppCompatActivity {
             if (babyHair == 22){
                 final BabyAndKids_Hair_Products product = new BabyAndKids_Hair_Products();
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+                /*btn_choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         ChooseFile();
                     }
-                });
+                });*/
 
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -429,12 +361,6 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -447,7 +373,6 @@ public class Add_Product extends AppCompatActivity {
                                     ID=Integer.toString(IDx);
                                     double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
-                                    product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
@@ -473,12 +398,12 @@ public class Add_Product extends AppCompatActivity {
             }else if (babyWash == 23){
                 final BabyAndKids_Cream_Products product = new BabyAndKids_Cream_Products();
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
+               /* btn_choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         ChooseFile();
                     }
-                });
+                });*/
 
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -497,12 +422,6 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -515,7 +434,6 @@ public class Add_Product extends AppCompatActivity {
                                     ID=Integer.toString(IDx);
                                     double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
-                                    product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
@@ -543,13 +461,6 @@ public class Add_Product extends AppCompatActivity {
             } else {
                 final BabyAndKids_Wash_Products product = new BabyAndKids_Wash_Products();
 
-                btn_choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ChooseFile();
-                    }
-                });
-
                 btn_add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -566,12 +477,6 @@ public class Add_Product extends AppCompatActivity {
                         }else if (editText3.getText().length() == 0){
                             Toast.makeText(Add_Product.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                             return;
-                        } else if (imageUri == null) {
-                            Toast.makeText(Add_Product.this, "Please upload your image!!! ", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else if (UploadTask != null && UploadTask.isInProgress()){
-                            Toast.makeText(Add_Product.this, "Please wait your image is being uploaded", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             DatabaseReference readref= FirebaseDatabase.getInstance().getReference().child("ProductIntital").child("Initta");
                             readref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -584,7 +489,6 @@ public class Add_Product extends AppCompatActivity {
                                     ID=Integer.toString(IDx);
                                     double price = Double.parseDouble(editText3.getText().toString());
                                     product.setID(ID);
-                                    product.setImageId(downloadImageURL);
                                     product.setName(editText1.getText().toString().trim());
                                     product.setBrand(editText2.getText().toString().trim());
                                     product.setPrice(price);
@@ -616,6 +520,5 @@ public class Add_Product extends AppCompatActivity {
         editText1.setText("");
         editText2.setText("");
         editText3.setText("");
-        imageView.setImageURI(null);
     }
 }

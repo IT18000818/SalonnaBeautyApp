@@ -17,7 +17,6 @@ public class Customer_Female_hair_ViewHolder  extends RecyclerView.ViewHolder{
         tw_title = (TextView)itemView.findViewById(R.id.C_female_hair_title);
         tw_brand = (TextView)itemView.findViewById(R.id.C_female_hair_brand);
         tw_price = (TextView)itemView.findViewById(R.id.C_female_hair_price);
-        imageView = (ImageView)itemView.findViewById(R.id.image_hair_C_female);
     }
 
 }

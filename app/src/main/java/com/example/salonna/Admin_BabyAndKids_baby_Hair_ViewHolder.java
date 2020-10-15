@@ -22,7 +22,6 @@ public class Admin_BabyAndKids_baby_Hair_ViewHolder  extends RecyclerView.ViewHo
         tw_title = (TextView)itemView.findViewById(R.id.hair_title);
         tw_brand = (TextView)itemView.findViewById(R.id.hair_brand);
         tw_price = (TextView)itemView.findViewById(R.id.hair_price);
-        imageView = (ImageView)itemView.findViewById(R.id.image_hair);
         btn_edit = (Button) itemView.findViewById(R.id.btn_baby_Hair_edit);
         btn_delete = (Button) itemView.findViewById(R.id.btn_baby_Hair_delete);
     }

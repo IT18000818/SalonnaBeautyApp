@@ -27,14 +27,13 @@
         <activity android:name=".Customer_BabyKids_BabyWash_Products_View" />
         <activity android:name=".Customer_BabyKids_Hair_Products_View" />
         <activity android:name=".Admin_Baby_kids_product_category" />
-        <activity android:name=".MyCart" />
         <activity android:name=".Add_Product" />
         <activity android:name=".Edit_Product" />
-        <activity android:name=".Admin_Customer_Category_selection" />
+        <activity android:name=".Customer_Category_selection" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MakePayment" />
         <activity android:name=".Login" />
-        <activity android:name=".Customer_Category_selection">
+        <activity android:name=".Admin_Customer_Category_selection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

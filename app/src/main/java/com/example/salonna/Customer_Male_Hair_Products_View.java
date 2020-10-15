@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -20,7 +22,6 @@ public class Customer_Male_Hair_Products_View extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
     DatabaseReference databaseReference;
 
     @Override
@@ -36,6 +37,8 @@ public class Customer_Male_Hair_Products_View extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Male_Hair_Product");
+
+
     }
 
     @Override
@@ -50,7 +53,6 @@ public class Customer_Male_Hair_Products_View extends AppCompatActivity {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
                 holder.tw_price.setText("Price: " + "Rs. " + model.getPrice());
-                Picasso.get().load(model.getImageId()).into(holder.imageView);
             }
 
 
@@ -66,5 +68,7 @@ public class Customer_Male_Hair_Products_View extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
+
     }
 }

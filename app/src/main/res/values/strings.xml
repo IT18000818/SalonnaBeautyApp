@@ -40,8 +40,9 @@
     <string name="clear">Clear</string>
     <string name="rs.300">Rs.300</string>
     <string name="delete">Delete</string>
+    <string name="back">Back</string>
     <string name="buynow">Buy Now</string>
-    <string name="totalprice">Total Price</string>
+    <string name="totalprice">Total Price = </string>
     <string name="makepayment">Make Payment</string>
     <string name="payment">Payment</string>
     <string name="payment_price">LKR 2500</string>

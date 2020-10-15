@@ -50,23 +50,6 @@ public class Admin_Male_Body_Products_View extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Male_Body_Product");
 
 
-        /*databaseReference = FirebaseDatabase.getInstance().getReference().child("Male_Body_Product").child("1");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("name").getValue().toString();
-                String brand = dataSnapshot.child("brand").getValue().toString();
-                String price = dataSnapshot.child("price").getValue().toString();
-                textView1.setText(name);
-                textView2.setText(brand);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
-
 
     }
 

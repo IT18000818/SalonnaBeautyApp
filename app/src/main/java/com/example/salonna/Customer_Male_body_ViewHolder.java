@@ -20,6 +20,6 @@ public class Customer_Male_body_ViewHolder extends RecyclerView.ViewHolder{
         tw_title = (TextView)itemView.findViewById(R.id.C_male_body_title);
         tw_brand = (TextView)itemView.findViewById(R.id.C_male_body_brand);
         tw_price = (TextView)itemView.findViewById(R.id.C_male_body_price);
-        imageView = (ImageView)itemView.findViewById(R.id.image_body_male);
+
     }
 }

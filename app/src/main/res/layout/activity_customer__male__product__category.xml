@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark"
     tools:context=".Customer_Male_Product_Category">
 
     <TextView
         android:id="@+id/textView6"
+        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/category"
@@ -23,10 +25,13 @@
     <Button
         android:id="@+id/btn_Male_Hair"
         android:layout_width="307dp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_orange_light"
         android:layout_height="250dp"
         android:onClick="ButtonClickMaleHair"
         android:text="@string/hair"
         android:textSize="24sp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +41,10 @@
     <Button
         android:id="@+id/btn_Male_body"
         android:layout_width="307dp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_orange_light"
         android:layout_height="250dp"
+        android:layout_marginTop="20dp"
         android:onClick="ButtonClickMaleBody"
         android:text="@string/body"
         android:textSize="24sp"

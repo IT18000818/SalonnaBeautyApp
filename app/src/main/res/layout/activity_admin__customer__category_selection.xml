@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff69b4"
+    android:background="@android:color/holo_orange_dark"
     tools:context=".Admin_Customer_Category_selection">
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_width="180dp"
         android:layout_height="168dp"
         android:layout_marginBottom="8dp"
-        android:background="#F64A8A"
+        android:background="@android:color/holo_orange_light"
         android:onClick="ButtonClickMale"
         android:text="@string/user_male"
         android:textColor="#FFFFFF"
@@ -44,7 +44,7 @@
         android:layout_width="180dp"
         android:layout_height="168dp"
         android:layout_marginBottom="8dp"
-        android:background="#F64A8A"
+        android:background="@android:color/holo_orange_light"
         android:onClick="ButtonClickFemale"
         android:text="@string/user_female"
         android:textColor="#FFFFFF"
@@ -61,7 +61,7 @@
         android:id="@+id/btn_babyandkids"
         android:layout_width="362dp"
         android:layout_height="245dp"
-        android:background="#F64A8A"
+        android:background="@android:color/holo_orange_light"
         android:onClick="ButtonClickBabyAndKids"
         android:text="@string/user_babies"
         android:textColor="#FFFFFF"

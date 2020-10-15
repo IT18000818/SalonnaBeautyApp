@@ -19,6 +19,5 @@ public class Customer_BabyAndKids_wash_ViewHolder extends RecyclerView.ViewHolde
         tw_title = (TextView)itemView.findViewById(R.id.C_wash_title);
         tw_brand = (TextView)itemView.findViewById(R.id.C_wash_brand);
         tw_price = (TextView)itemView.findViewById(R.id.C_wash_price);
-        imageView = (ImageView)itemView.findViewById(R.id.C_image_wash);
     }
 }

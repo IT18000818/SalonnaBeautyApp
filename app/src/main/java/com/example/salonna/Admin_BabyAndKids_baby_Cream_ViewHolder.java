@@ -24,7 +24,6 @@ public class Admin_BabyAndKids_baby_Cream_ViewHolder extends RecyclerView.ViewHo
         tw_title = (TextView)itemView.findViewById(R.id.cream_title);
         tw_brand = (TextView)itemView.findViewById(R.id.cream_brand);
         tw_price = (TextView)itemView.findViewById(R.id.cream_price);
-        imageView = (ImageView)itemView.findViewById(R.id.image_cream);
         btn_edit = itemView.findViewById(R.id.btn_edit_cream);
         Delete = itemView.findViewById(R.id.delete_cream_admin);
     }

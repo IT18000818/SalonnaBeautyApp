@@ -85,7 +85,6 @@ public class Admin_BabyKids_BabyHair_Products_View extends AppCompatActivity {
                 holder.tw_title.setText( "Name: " + model.getName());
                 holder.tw_brand.setText("Brand: " + model.getBrand());
                 holder.tw_price.setText("Price: " + "Rs. " +model.getPrice());
-                Picasso.get().load(model.getImageId()).into(holder.imageView);
                 holder.btn_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -42,7 +42,7 @@ public class BabyAndKids_Cream_Products {
         Brand = brand;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
@@ -50,11 +50,4 @@ public class BabyAndKids_Cream_Products {
         Price = price;
     }
 
-    public String getImageId() {
-        return ImageId;
-    }
-
-    public void setImageId(String imageId) {
-        ImageId = imageId;
-    }
 }

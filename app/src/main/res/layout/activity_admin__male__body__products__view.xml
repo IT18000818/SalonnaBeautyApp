@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark"
     app:cardElevation="10dp"
     tools:context=".Admin_Male_Body_Products_View">
 
@@ -18,12 +19,14 @@
             android:layout_marginTop="55dp"
             android:text="@string/products"
             android:textAlignment="center"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="30dp"
             android:textStyle="bold"
             tools:text="@string/products" />
         <Button
             android:id="@+id/btn_add_male_body"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_orange_light"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:onClick="ButtonClickAddMaleBody"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark"
     tools:context=".Admin_Baby_kids_product_category">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/category"
+        android:textColor="@android:color/white"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,6 +26,8 @@
         android:id="@+id/btn_baby_and_kids_hair_admin"
         android:layout_width="180dp"
         android:layout_height="168dp"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="@android:color/white"
         android:onClick="ButtonClickBabyAndKidsHair"
         android:text="@string/baby_hair"
         android:textSize="24sp"
@@ -38,6 +42,8 @@
         android:id="@+id/btn_baby_and_kids_wash_admin"
         android:layout_width="180dp"
         android:layout_height="168dp"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="@android:color/white"
         android:onClick="ButtonClickBabyAndKidsWash"
         android:text="@string/baby_wash"
         android:textSize="24sp"
@@ -51,10 +57,13 @@
     <Button
         android:id="@+id/btn_baby_and_kids_cream_admin"
         android:layout_width="362dp"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="@android:color/white"
         android:layout_height="245dp"
         android:onClick="ButtonClickBabyAndKidsCream"
         android:text="@string/baby_cream"
         android:textSize="24sp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
