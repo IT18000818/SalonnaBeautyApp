@@ -132,7 +132,7 @@ public class beauticianProfile extends AppCompatActivity {
                                beautician.setEmail(Email.getText().toString().trim());
                                beautician.setServices(Services.getText().toString().trim());
 
-
+                                //updating one key before lastbeautician
                                DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("beautician").child(lastKey);
                                dbref.setValue(beautician);
 
@@ -156,7 +156,7 @@ public class beauticianProfile extends AppCompatActivity {
                                beautician.setEmail(Email.getText().toString().trim());
                                beautician.setServices(Services.getText().toString().trim());
 
-
+                               //updating last beautician
                                DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("beautician").child("Lastbeautician");
                                dbref.setValue(beautician);
 

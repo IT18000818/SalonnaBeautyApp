@@ -23,6 +23,7 @@ public class Activity5 extends AppCompatActivity {
     Button btnNext;
     DatabaseReference dbRef;
     beautician ss;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     private void clearControls() {
         txtID.setText("");
@@ -77,6 +78,8 @@ public class Activity5 extends AppCompatActivity {
                 try {
                     if (TextUtils.isEmpty(txtID.getText().toString()))
                         Toast.makeText(getApplicationContext(), "Please enter an ID", Toast.LENGTH_SHORT).show();
+                    else if (txtID.getText().toString().length() != 10)
+                        Toast.makeText(getApplicationContext(), "Please enter a valid ID", Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(txtFirstName.getText().toString()))
                         Toast.makeText(getApplicationContext(), "please enter the First Name", Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(txtLastName.getText().toString()))
@@ -87,6 +90,8 @@ public class Activity5 extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "please enter the Address", Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(txtEmail.getText().toString()))
                         Toast.makeText(getApplicationContext(), "please enter the Email", Toast.LENGTH_SHORT).show();
+                    else if(!txtEmail.getText().toString().trim().matches(emailPattern))
+                        Toast.makeText(getApplicationContext(), "please enter a valid Email", Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(txtServices.getText().toString()))
                         Toast.makeText(getApplicationContext(), "please enter the Service", Toast.LENGTH_SHORT).show();
                     else {
@@ -113,7 +118,7 @@ public class Activity5 extends AppCompatActivity {
                     }
 
                 } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Invalid context number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Number format error", Toast.LENGTH_SHORT).show();
                 }
             }
         });
