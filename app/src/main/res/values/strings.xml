@@ -109,6 +109,7 @@
     <string name="address">Address</string>
     <string name="email">Email</string>
     <string name="service">Services</string>
+    <string name="tex">tex</string>
 
 
 </resources>
